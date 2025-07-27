@@ -17,14 +17,22 @@ int main()
         aht10_measurement();
         sleep_ms(1000);
         aht10_read_data(&temp, &hum);
+        
         sprintf(buffer1, "Temp: %.2f °C", temp);
         sprintf(buffer2, "Hum: %.2f %%", hum);
+
         display_status_msg(buffer1);
         display_status_msg(buffer2);
-            // Lógica do alerta
+
+        // Serial Monitor
+        printf("Temperatura: %.2f °C\n", temp);
+        printf("Umidade: %.2f %%\n", hum);
+
         if (hum > 70.0 || temp < 20.0) {
             display_status_msg("ALERTA!");
+            printf("ALERTA: condição crítica detectada!\n");
         }
+
         sleep_ms(1000);
     }
 }
