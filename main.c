@@ -21,6 +21,10 @@ int main()
         sprintf(buffer2, "Hum: %.2f %%", hum);
         display_status_msg(buffer1);
         display_status_msg(buffer2);
+            // Lógica do alerta
+        if (hum > 70.0 || temp < 20.0) {
+            display_status_msg("ALERTA!");
+        }
         sleep_ms(1000);
     }
 }
